@@ -6,7 +6,9 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("CarPrice.csv")
+
 df = df.drop(columns=['car_ID', 'CarName'])
+
 df.fillna(df.mean(), inplace=True)
 
 X = df.drop('price', axis=1)
@@ -29,44 +31,43 @@ print(f'Mean Squared Error: {mse}')
 print(f'R^2 Score: {r2}')
 
 
+wheelbase = float(input("Enter wheelbase: "))
+carlength = float(input("Enter car length: "))
+carwidth = float(input("Enter car width: "))
+carheight = float(input("Enter car height: "))
+curbweight = float(input("Enter curb weight: "))
+enginesize = float(input("Enter engine size: "))
+horsepower = float(input("Enter horsepower: "))
+peakrpm = float(input("Enter peak RPM: "))
+citympg = float(input("Enter city MPG: "))
+highwaympg = float(input("Enter highway MPG: "))
 
-# wheelbase = float(input("Enter wheelbase: "))
-# carlength = float(input("Enter car length: "))
-# carwidth = float(input("Enter car width: "))
-# carheight = float(input("Enter car height: "))
-# curbweight = float(input("Enter curb weight: "))
-# enginesize = float(input("Enter engine size: "))
-# horsepower = float(input("Enter horsepower: "))
-# peakrpm = float(input("Enter peak RPM: "))
-# citympg = float(input("Enter city MPG: "))
-# highwaympg = float(input("Enter highway MPG: "))
-
-# new_cars = pd.DataFrame({
-#     'wheelbase': [wheelbase],
-#     'carlength': [carlength],
-#     'carwidth': [carwidth],
-#     'carheight': [carheight],
-#     'curbweight': [curbweight],
-#     'enginesize': [enginesize],
-#     'horsepower': [horsepower],
-#     'peakrpm': [peakrpm],
-#     'citympg': [citympg],
-#     'highwaympg': [highwaympg]
-# })
+new_car_features = pd.DataFrame({
+    'wheelbase': [wheelbase],
+    'carlength': [carlength],
+    'carwidth': [carwidth],
+    'carheight': [carheight],
+    'curbweight': [curbweight],
+    'enginesize': [enginesize],
+    'horsepower': [horsepower],
+    'peakrpm': [peakrpm],
+    'citympg': [citympg],
+    'highwaympg': [highwaympg]
+})
 
 
-new_car_features = {
-    'wheelbase': [88.6],
-    'carlength': [168.8],
-    'carwidth': [64.1],
-    'carheight': [48.8],
-    'curbweight': [2548],
-    'enginesize': [130],
-    'horsepower': [111],
-    'peakrpm': [5000],
-    'citympg': [21],
-    'highwaympg': [27]
-}
+# new_car_features = {
+#     'wheelbase': [88.6],
+#     'carlength': [168.8],
+#     'carwidth': [64.1],
+#     'carheight': [48.8],
+#     'curbweight': [2548],
+#     'enginesize': [130],
+#     'horsepower': [111],
+#     'peakrpm': [5000],
+#     'citympg': [21],
+#     'highwaympg': [27]
+# }
 
 new_cars = pd.DataFrame(new_car_features)
 new_cars_scaled = scaler.transform(new_cars)
